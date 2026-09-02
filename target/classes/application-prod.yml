@@ -1,0 +1,9 @@
+spring:
+  jpa:
+    show-sql: false
+
+logging:
+  level:
+    com.cloudstorage: WARN
+    org.flywaydb: INFO
+    org.springframework.security: WARN
