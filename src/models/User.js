@@ -41,7 +41,7 @@ const User = sequelize.define('User', {
     field: 'provider_id',
   },
 }, {
-  tableName:  'users',
+  tableName:  'cloudvault_users',
   timestamps: true,
   createdAt:  'created_at',
   updatedAt:  'updated_at',
