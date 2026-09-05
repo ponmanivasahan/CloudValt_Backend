@@ -6,13 +6,17 @@ require('dotenv').config();
 const app = require('./app');
 const { sequelize } = require('./config/database');
 
+// Require models so Sequelize knows about them
+require('./models/User');
+
 const PORT = process.env.PORT || 5000;
 
 async function startServer() {
   try {
-    // Test DB connection (does NOT create or alter tables)
+    // Connect to DB and automatically create tables if they are missing
     await sequelize.authenticate();
-    console.log('✅ MySQL connected successfully.');
+    await sequelize.sync({ alter: true });
+    console.log('✅ MySQL connected and tables synced successfully.');
 
     app.listen(PORT, () => {
       console.log(`🚀 Server running on http://localhost:${PORT}`);
