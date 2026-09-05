@@ -15,7 +15,7 @@ async function startServer() {
   try {
     // Connect to DB and automatically create tables if they are missing
     await sequelize.authenticate();
-    await sequelize.sync({ alter: true });
+    await sequelize.sync(); // Removed { alter: true } to prevent issues with shared databases
     console.log('✅ MySQL connected and tables synced successfully.');
 
     app.listen(PORT, () => {
