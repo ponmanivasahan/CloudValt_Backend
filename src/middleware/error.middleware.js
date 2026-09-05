@@ -49,7 +49,7 @@ function errorHandler(err, req, res, next) { // eslint-disable-line no-unused-va
   }
 
   const status  = err.statusCode || 500;
-  const message = status < 500 ? err.message : 'An unexpected error occurred. Please try again later.';
+  const message = err.message; // Temporarily exposing all errors to the frontend for debugging
 
   return res.status(status).json({
     success: false,
